@@ -36,10 +36,10 @@ class UsersController extends AppController {
      */
 	function login($url = NULL) {
              $this->userInfo();
-	//pr($this->Session->read("AuthUser"));
-	//die("here");
-		$this->checklogin();
-		//$this->layout ="admin";
+            //pr($this->Session->read("AuthUser"));
+            //die("here");
+            $this->checklogin();
+            //$this->layout ="admin";
         $this->set('title_for_layout', 'User Login');
         if (!empty($url)) {
             $url = implode("/", $this->params['pass']);
