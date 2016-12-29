@@ -348,53 +348,19 @@ class AppController extends Controller {
                     "foreignKey" => false,
                     "conditions" => "User.id = UserDetail.user_id",
                     "type" => "Inner"
-                ),
-                "Location" => array (
-                    "className" => "Location",
-                    "foreignKey" => false,
-                    "conditions" => "UserDetail.location_id = Location.id",
-                )
-            );
-            $this->User->hasMany = array(
-                "Dish" => array (
-                    "className" => "Dish",
-                    "foreignKey" => "user_id",
-                    "limit" => 20,
-                    "order" => "created desc"
-                    //"conditions" => "Dish.user_id = User.id"
                 )
             );
             
-            $this->loadModel("Follower");
-            $this->Follower->hasMany = $this->Follower->hasOne = $this->Follower->belongsTo = array();
-            $this->Follower->belongsTo = array(
-                "UserDetail" => array (
-                    "className" => "UserDetail",
-                    "foreignKey" => false,
-                    "conditions" => "UserDetail.user_id = Follower.follower_id",
-                    "type" => "Inner"
-                ),
-                "User" => array (
-                    "className" => "User",
-                    "foreignKey" => false,
-                    "conditions" => "User.id = Follower.user_id",
-                    "type" => "Inner"
-                )
-            );
+            
             if ( empty($slug) ) {
                 $id = empty($id)?$this->Session->read("AuthUser.User.id"):$id;
                 if ( $user = $this->User->findById($id) ) {
                     $this->set("userInfo",$user);
-                    $followers = $this->Follower->find("all",array("conditions"=>array("User.id"=>$id)));
-                    $this->set("follower",$followers);
+                    
                 } 
             } else {
                 if ( $user = $this->User->findByUserSlug($slug) ) {
                     $this->set("userInfo",$user);
-                    $followers = $this->Follower->find("all",array("conditions"=>array("User.user_slug"=>$slug)));
-                    $ifollow = $this->Follower->find("first",array("conditions"=>array("User.user_slug"=>$slug,"Follower.follower_id" => $this->Session->read("AuthUser.User.id") )));
-                    $this->set("follower",$followers);
-                    $this->set("ifollow",$ifollow);
                 }
             }
         }
