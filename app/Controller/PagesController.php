@@ -44,9 +44,7 @@ class PagesController extends AppController {
 	}
 	
 	function index() {
-            $this->loadModel("Location");
-            $locations = $this->Location->find("list",array("conditions"=>array("status"=>1)));
-            $this->set(compact("locations"));
+            
 	}
 
 /**
