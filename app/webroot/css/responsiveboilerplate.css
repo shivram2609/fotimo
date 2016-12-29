@@ -1,0 +1,516 @@
+
+
+/* ClearFix
+=============================================================================================== */
+
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+
+/* Media - Fluid Images - Video
+============================================================================================== */
+
+figure {
+  margin: 0;
+}
+
+img,
+object,
+embed,
+video {
+  max-width: 100%;
+}
+
+body > img,
+object,
+embed,
+video {
+  width: 100%;
+}
+
+/* Fluid images */
+
+img {
+  height: auto;
+  vertical-align: middle;
+  border: 0;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+          box-sizing: border-box;
+  -ms-interpolation-mode: bicubic;
+}
+
+/* Correct IE9 overflow */
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Avoid Google maps broken with max-width 100% */
+
+img[src*="maps.gstatic.com"],
+img[src*="googleapis.com"] {
+  max-width: none;
+}
+
+/* Links (No outline borders)
+============================================================================================== */
+
+a:focus {
+  outline: 0;
+}
+
+/* Responsive Navigation Basic Style
+===============================================================================================*/
+
+#menu {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  #menu {
+    display: block;
+    padding: 5px;
+    font-size: 1.35em;
+    text-align: right;
+    cursor: pointer;
+    background: #dddddd;
+  }
+  #menu span {
+    margin-right: 10px;
+  }
+  #nav {
+    display: none;
+  }
+  #nav ul {
+    padding: 2%;
+    margin: 0 auto;
+    background-color: #dddddd;
+  }
+  #nav li {
+    display: block;
+    width: 100%;
+  }
+}
+
+/* Grid Columns
+================================================================================================*/
+
+/*We strong recommend use the container tag one time only, just to center your grids on the page*/
+
+.container {
+  padding: 0;
+}
+
+.container:before,
+.container:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.container:after {
+  clear: both;
+}
+
+/* Fluid Default grid for 1024px screen resolution, grid based for 940px*/
+
+.content {
+  width: 100%;
+}
+
+.content:before,
+.content:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.content:after {
+  clear: both;
+}
+
+.content [class*="col"] {
+  float: left;
+  margin-left: 2.127659574468085%;
+}
+
+.content [class*="col"]:first-child {
+  margin-left: 0;
+}
+
+.content .col12 {
+  width: 100%;
+}
+
+.content .col11 {
+  width: 91.48936170212765%;
+}
+
+.content .col10 {
+  width: 82.97872340425532%;
+}
+
+.content .col9 {
+  width: 74.46808510638297%;
+}
+
+.content .col8 {
+  width: 65.95744680851064%;
+}
+
+.content .col7 {
+  width: 57.44680851063829%;
+}
+
+.content .col6 {
+  width: 48.93617021276595%;    
+}
+
+.content .col5 {
+  width: 40.42553191489362%;
+}
+
+.content .col4 {
+  width: 31.914893617021278%;
+}
+
+.content .col3 {
+  width: 23.404255319148934%;
+}
+
+.content .col2 {
+  width: 14.893617021276595%;
+}
+
+.content .col1 {
+  width: 6.382978723404255%;
+}
+
+/* Fluid grid to 1280px screen resolution, grid based for 1120px*/
+
+@media (min-width: 1200px) {
+  .content {
+    width: 100%;
+  }
+  .content:before,
+  .content:after {
+    display: table;
+    line-height: 0;
+    content: "";
+  }
+  .content:after {
+    clear: both;
+  }
+  .content [class*="col"] {
+    float: left;
+    margin-left: 1.694915254237288%;
+  }
+  .content [class*="col"]:first-child {
+    margin-left: 0;
+  }
+  .content .col12 {
+    width: 100%;
+  }
+  .content .col11 {
+    width: 91.52542372881356%;
+  }
+  .content .col10 {
+    width: 83.0508474576271%;
+  }
+  .content .col9 {
+    width: 74.57627118644066%;
+  }
+  .content .col8 {
+    width: 66.10169491525423%;
+  }
+  .content .col7 {
+    width: 57.6271186440678%;
+  }
+  .content .col6 {
+    width: 49.152542372881356%;
+  }
+  .content .col5 {
+    width: 40.677966101694906%;
+  }
+  .content .col4 {
+    width: 32.20338983050847%;
+  }
+  .content .col3 {
+    width: 23.728813559322035%;
+  }
+  .content .col2 {
+    width: 15.254237288135592%;
+  }
+  .content .col1 {
+    width: 6.779661016949152%;
+  }
+}
+
+/* General small screen Mobile down size from 768px, display all columns in block
+============================================================================================== */
+
+@media all and (max-width: 769px) {
+  body {
+    font-size: 100%;
+    -webkit-text-size-adjust: none;
+        -ms-text-size-adjust: none;
+  }
+  .container {
+    padding: 0;
+  }
+  .content {
+    width: 100%;
+  }
+  [class*="col"],
+  .content [class*="col"] {
+    display: block;
+    float: none;
+    width: 100%;
+    margin-left: 0;
+  }
+  .col12,
+  .content .col12 {
+    width: 100%;
+  }
+}
+
+/* Custom sizes
+============================================================================================== */
+
+
+
+/* Add your styles for devices with a maximum width of 768 */
+@media screen and (max-width: 960px) {
+    .content {
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+	.socialAccounts  {text-align:center;}
+	.socialBox {width:250px; float:none; display:inline-block;}
+}
+@media screen and (max-width: 810px) {
+	.socialBox {width:230px;}
+}
+@media screen and (max-width: 769px) {
+  .login-left {border-right: 0; border-bottom: solid #333 1px; padding-left:0; padding-bottom: 60px; padding-top: 0;}
+  .login-left input[type="text"] {width: 100%;}
+  .or {left:0; right: 0; bottom: -40px; top: auto;}
+  .login-right {padding:60px 0 0 0;}
+  .login-right-bottom {margin-top: 30px;}
+  .login-right-bottom a {float: none; display: inline-block;}
+  .login-right-bottom a:last-child {margin-right: 0;}
+    p, .content .qsibling p {
+        text-align: center !important;
+    }
+    .content {
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+    .sec {
+        padding: 15px 0;
+    }
+    .heading2 {
+        margin-top: 15px;
+    }
+    .buttons {
+        margin: 20px 0; 
+        text-align: center;
+    }
+    .buttons a {
+        float: none;
+        display: inline-block;
+        margin: 10px 5px;
+    }
+    .bannerImg{
+        text-align: center
+    }
+    .divider {
+        display: none;
+    }
+    .question {
+        margin: 10px 0;
+    }
+    .social {
+        margin: 20px 0;
+    }
+    .navigation li a:hover {
+        margin-top: 0;
+    }
+    #lightSlider .content .question {
+        float: left;
+    }
+    #lightSlider .content {
+        width: 85%;
+        margin: 0 auto;
+    } 
+    .col4.social {
+        width: 300px;
+        margin: 20px auto !important;
+    }
+	.mainContent {min-height:inherit; padding-bottom:30px;}
+	.settings-left {border-right:0; min-height:100%; padding-bottom:30px;}
+	.radioContainer {float:none; text-align:center;}
+	.radioContainer label {float:none; display:inline-block;}
+	.settings-right {padding-left:0;}
+	.fileContainer {text-align:center; margin-top:30px;}
+	.socialBox {width:100%; margin:0 0 100px 0;}
+	.socialBox:last-child {margin:0;}
+	.socialHead {text-align:center;}
+	.plusIcon {float:none; display:inline-block;}
+	.plusIcon + div {display:inline-block;}
+	.shead1 {margin:0;}
+  .pageName {font-size: 16px;margin-top: 20px;line-height: normal;}
+  .formField{width: 100%;}
+  .vault #carousel{width: 100%;
+box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+padding: 0 20px;}
+.flex-direction-nav{left: -20px;
+padding: 0 20px;
+width: 100%;}
+.flex-direction-nav .flex-prev, .flexslider:hover .flex-prev{ left: 0px;}
+.flex-direction-nav .flex-next, .flexslider:hover .flex-next{ right: 0;}
+.vault #carousel li{padding: 5px;}
+.contentLeft{width: 100%;}
+.contentRight{width: 100%;}
+.radioContainer label {float: left;}
+p.formHead{text-align: left !important;}
+.formField{margin-top: 5px;}
+.formRow{margin-bottom: 0;}
+.contentLeft{width: 100%;}
+.contentRight{width: 100%;}
+.rightLink{margin-top: 20px;}
+/*image vault1 page*/    
+.vaultList li {width: 33.33333%;}
+
+}
+
+
+/* Add your styles for devices with a maximum width of 480 */
+
+@media all and (min-width: 681px) {
+    .headerMenu {
+        display: block !important;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .menuIcon {
+        display: block;
+        width: 54px;
+        height: 40px;
+        padding: 5px 0;
+        position: absolute;
+        left: 0;
+        background-color: #000;
+    }
+    .menuLine {
+        display: block;
+        margin: 7px 9px;
+        width: 36px;
+        height: 3px;
+        background-color: #fff;
+    }
+    .headerMenu {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 50px;
+        background-color: #f08c00;
+        border-bottom: 1px #333 solid;
+        display: none;
+    }
+    .navigation li {
+        display: block;
+        float: none;
+        margin: 0;
+    }
+    .navigation li.right {
+      float: none;
+      padding: 0;
+    }
+    .navigation li a {
+        float: none;
+        display: block;
+        height: 40px;
+        line-height: 40px;
+        padding: 0 15px;
+        border-top: 1px #333 solid;
+    }
+	
+	.navigation li .txt {line-height:43px;}
+
+
+}
+/* Add your styles for devices with a maximum width of 320 */
+@media screen and (max-width: 480px) {
+    .vaultList li {width: 50%;}
+}
+@media screen and (max-width: 320px) {
+	.fileContainer {margin-top:10px;}
+	.fileVal {width:auto; display:block; text-align:center;}
+	.fileBtn {margin-left:0;}
+  
+}
+
+/* Add your styles for devices with a maximum width of 1024 */
+
+@media screen and (max-width: 1024px) {
+  
+}
+
+/* iPads (landscape) and (portrait)  ----------- */
+
+/* Add your styles for devices with a maximum width of 1024 */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+  
+}
+
+/* Add your styles for devices with a maximum width of 768 */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+
+
+  
+}
+@media only screen and (max-width: 800px) {
+	
+	#flip-scroll .cf:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+	
+	#flip-scroll table { width: 100%; border-collapse: collapse; border-spacing: 0; }
+ 
+	#flip-scroll th,
+	#flip-scroll td { margin: 0; vertical-align: top; padding: 12px 10px;font-size: 13px; }
+	#flip-scroll th { text-align: left; }
+	
+	#flip-scroll table { display: block; position: relative; width: 100%; }
+	#flip-scroll thead { display: block; float: left; }
+	#flip-scroll tbody { display: block; width: auto; position: relative; overflow-x: auto; white-space: nowrap; }
+	#flip-scroll thead tr { display: block; }
+	#flip-scroll th { display: block; text-align: right; }
+	#flip-scroll tbody tr { display: inline-block; vertical-align: top; }
+	#flip-scroll td { display: block; text-align: left; }
+ 
+ 
+	/* sort out borders 
+ 
+	#flip-scroll th { border-bottom: 0; border-left: 0; }
+	#flip-scroll td { border-left: 0; border-right: 0; border-bottom: 0; }
+	#flip-scroll tbody tr { border-left: 1px solid #babcbf; }
+	#flip-scroll th:last-child,
+	#flip-scroll td:last-child { border-bottom: 1px solid #babcbf; }*/
+}
+	
