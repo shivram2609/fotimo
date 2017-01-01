@@ -32,6 +32,7 @@
 			top: 0;
 			width: 100%;
 			z-index: 999999999;
+			padding: 5px;
 		}
 
 		.success_message {
@@ -45,6 +46,7 @@
 			top: 0;
 			width: 100%;
 			z-index: 999999999;
+			padding: 5px;
 		}
 	</style>
 </head>
