@@ -617,8 +617,8 @@ class UsersController extends AppController {
 	// for another provider refer to hybridauth documentation
             )
         );
-		//pr($hybridauth_config);
-		//echo($provider);
+		pr($hybridauth_config);
+		echo($provider);
 		//die;
         try {
             // create an instance for Hybridauth with the configuration file path as parameter
@@ -627,8 +627,8 @@ class UsersController extends AppController {
             $adapter = $hybridauth->authenticate($provider);
             // grab the user profile
             $user_profile = $adapter->getUserProfile();
-			//pr($user_profile);
-			//die("here");
+			pr($user_profile);
+			die("here");
             //login user using auth component
             if (!empty($user_profile)) {
                 $user = $this->_findOrCreateUser($user_profile, $provider); // optional function if you combine with Auth component
