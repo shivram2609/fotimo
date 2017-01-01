@@ -520,7 +520,7 @@ class UsersController extends AppController {
 				$userData['User']['password'] = isset($userData['User']['password'])?$this->encryptpass($userData['User']['password']):$this->encryptpass($userData['User']['identifier']);
 				$userData['User']['status'] = $status = empty($userData['User']['identifier'])?0:1;
 				$userData['UserDetail']['first_name'] = $name = $userData['User']['name'];
-                                $userData['User']['user_slug'] = $this->getSlug();
+                $userData['User']['user_slug'] = $this->getSlug();
 				$confirmlink = SITE_LINK."register-confirmation/".$confirmationtoken;
 				//pr($userData);
 				$dataSource = $this->User->getDataSource();
@@ -826,7 +826,7 @@ class UsersController extends AppController {
         
         function getSlug() {
             $slug = strtotime(date("Y-m-d h:i:s"));
-            if ( $user = $this->User->findbyUserSlug($slug) ) {
+            if ( $user = $this->User->find("first",array("conditions"=>array("User.user_slug"=>$slug),"recursive"=>-1)) ) {
                 $this->getSlug();
             } else {
                 return $slug;
