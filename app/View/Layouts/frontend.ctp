@@ -21,10 +21,36 @@
 			margin: 5px 0 0 5px;
 			font-size: 12px;
 		}
+		.message {
+			background-color: red;
+			border: 1px solid;
+			color: inherit;
+			display: block;
+			opacity: 0.8;
+			position: fixed;
+			text-align: center;
+			top: 0;
+			width: 100%;
+			z-index: 999999999;
+		}
+
+		.success_message {
+			background-color: #EBF8A4;
+			border: 1px solid;
+			color: inherit;
+			display: block;
+			opacity: 0.8;
+			position: fixed;
+			text-align: center;
+			top: 0;
+			width: 100%;
+			z-index: 999999999;
+		}
 	</style>
 </head>
 <body>
     <div class="container">
+		<?php echo $this->Session->flash(); ?>
         <?php echo $this->element("frontheader"); ?>
         <?php echo $content_for_layout; ?>
         <?php echo $this->element("frontfooter"); ?>
