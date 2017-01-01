@@ -158,7 +158,7 @@ class AppController extends Controller {
      * @description		: NA
      */
 
-    function sendMail($to, $template = 'email', $fromname = 'SwankCook') {
+    function sendMail($to, $template = 'email', $fromname = 'FOTIMO') {
         App::uses('CakeEmail', 'Network/Email');
        // if (isset($this->params->base) && !empty($this->params->base)) {
            // $email = new CakeEmail("gmail");
