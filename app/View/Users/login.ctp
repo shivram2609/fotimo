@@ -1,4 +1,4 @@
-<?php echo $this->Form->create('User');  ?>
+<?php echo $this->Form->create('User',array("novalidate"=>true));  ?>
 <section class="login-dashboard">
 <div class="content mainContent">
     <p class="login-heading">Log In or Create New Account</p>
@@ -6,7 +6,7 @@
         <div class="col6">
             <div class="login-left">
                 <?php echo $this->Form->input("email",array("label"=>false,"type"=>"text","placeholder"=>"email address", "class"=>"ip"));  ?>
-                <?php echo $this->Form->input("password",array("label"=>false,"type"=>"text","placeholder"=>"password", "class"=>"ip","type"=>"password"));  ?>
+                <?php echo $this->Form->password("password",array("label"=>false,"placeholder"=>"password", "class"=>"ip"));  ?>
                 <div class="btn clearfix"><button title="SIGNIN">SIGNIN</button>
                     <a href="<?php echo SITE_LINK."forgot-password" ?>" title="Forgot Password?">FORGOT PASSWORD?</a>
                 </div>
