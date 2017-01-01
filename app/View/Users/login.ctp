@@ -6,7 +6,7 @@
         <div class="col6">
             <div class="login-left">
                 <?php echo $this->Form->input("email",array("label"=>false,"type"=>"text","placeholder"=>"email address", "class"=>"ip"));  ?>
-                <?php echo $this->Form->input("password",array("label"=>false,"type"=>"text","placeholder"=>"password", "class"=>"ip"));  ?>
+                <?php echo $this->Form->input("password",array("label"=>false,"type"=>"text","placeholder"=>"password", "class"=>"ip","type"=>"password"));  ?>
                 <div class="btn clearfix"><button title="SIGNIN">SIGNIN</button>
                     <a href="<?php echo SITE_LINK."forgot-password" ?>" title="Forgot Password?">FORGOT PASSWORD?</a>
                 </div>
