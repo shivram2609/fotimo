@@ -32,7 +32,7 @@
 		</div>
 
 	</div>
-    <?php } elseif ($this->Session->read("Auth.User.id")) { ?>
+    <?php } elseif ($this->Session->read("AuthUser.User.id")) { ?>
 	<div class="content">
         <div class="col12">
 			<nav class="headerMenu">
