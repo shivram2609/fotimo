@@ -63,5 +63,12 @@
 				s.parentNode.insertBefore(ga, s);
 		})();
 </script>-->
+<script>
+        $(document).ready(function(){
+			$("#flashMessage").fadeOut(8000);
+			//jQuery('#userInfo').tablesorter(); 
+	   });		
+        
+    </script>
 </body>
 </html>

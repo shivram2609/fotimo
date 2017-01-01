@@ -1,3 +1,4 @@
+<?php echo $this->Session->flash(); ?>
 <?php echo $this->Form->create('User',array("novalidate"=>true));  ?>
 <section class="login-dashboard">
 <div class="content mainContent">
