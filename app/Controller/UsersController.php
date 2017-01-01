@@ -617,8 +617,8 @@ class UsersController extends AppController {
 	// for another provider refer to hybridauth documentation
             )
         );
-		pr($hybridauth_config);
-		echo($provider);
+		//pr($hybridauth_config);
+		//echo($provider);
 		//die;
         try {
             // create an instance for Hybridauth with the configuration file path as parameter
@@ -627,8 +627,8 @@ class UsersController extends AppController {
             $adapter = $hybridauth->authenticate($provider);
             // grab the user profile
             $user_profile = $adapter->getUserProfile();
-			pr($user_profile);
-			die("here");
+			//pr($user_profile);
+			//die("here");
             //login user using auth component
             if (!empty($user_profile)) {
                 $user = $this->_findOrCreateUser($user_profile, $provider); // optional function if you combine with Auth component
@@ -679,8 +679,8 @@ class UsersController extends AppController {
             // well, basically you should not display this to the end user, just give him a hint and move on..
             $error .= "Original error message: " . $e->getMessage();
             $error .= "Trace: " . $e->getTraceAsString();
-			echo $error;
-			die;
+			//echo $error;
+			//die;
             $this->set('error', $error);
         }
         //die("here");

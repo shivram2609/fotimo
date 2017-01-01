@@ -16,6 +16,12 @@
     <!--[if lt IE 9]>
 		<script src="js/html5shiv.min.js"></script>
 	<![endif]-->
+	<style>
+		div.error-message{color: red !important;
+			margin: 5px 0 0 5px;
+			font-size: 12px;
+		}
+	</style>
 </head>
 <body>
     <div class="container">
