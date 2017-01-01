@@ -16,6 +16,7 @@ if ($this->Session->read("AuthUser.User.id") && $this->Session->read("AuthUser.U
 				<li>
 					<a href="<?php echo $this->Html->url(SITE_LINK.'admin/change-password'); ?>" <?php if ($this->params['action'] == 'admin_changepassword') { ?> class="active" <?php } ?>>Change Password</a>
 				</li> 
+				<?php /*
 				<li>
 					<a href="<?php echo $this->Html->url(SITE_LINK.'admin/categories'); ?>" <?php if ($this->params['controller'] == 'categories') { ?> class="active" <?php } ?>>Categories</a>
 				</li>
@@ -28,7 +29,7 @@ if ($this->Session->read("AuthUser.User.id") && $this->Session->read("AuthUser.U
 				<li>
 					<a href="<?php echo $this->Html->url(SITE_LINK.'admin/locations'); ?>" <?php if ($this->params['controller'] == 'locations') { ?> class="active" <?php } ?>>Locations</a>
 				</li> 
-				 
+				 */ ?>
 			</ul>
 		<?php } ?>
     </div>
