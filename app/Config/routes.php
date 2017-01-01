@@ -70,6 +70,7 @@
 	
 	Router::connect('/login_with_twitter', array('controller' => 'users', 'action' => 'loginwith','Twitter'));
 	Router::connect('/login_with_facebook', array('controller' => 'users', 'action' => 'loginwith','Facebook'));
+	Router::connect('/login_with_google', array('controller' => 'users', 'action' => 'loginwith','Google'));
 	
 	Router::connect('/privacy-policy/*', array('controller' => 'pages', 'action' => 'privacypolicy'));
 	Router::connect('/profile/*', array('controller' => 'users', 'action' => 'profile'));

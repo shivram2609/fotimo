@@ -600,14 +600,20 @@ class UsersController extends AppController {
             "providers" => array(
                 "Facebook" => array(
                     "enabled" => true,
-                    "keys" => array("id" => "124384158044511", "secret" => "4ae9dd2f209893e63807b02c929fe17e"),
+                    "keys" => array("id" => "1627175230853791", "secret" => "ef022ac07163fc51c21e68f7ed4ba985"),
                     'scope'   => 'email, user_about_me, user_birthday, user_hometown, user_website, read_stream',
                     'trustForwarded' => false
                 ),
                 "Twitter" => array(
                     "enabled" => true,
-                    "keys" => array("key" => "gjWVPpuiOsBpmql5ecCCKqf13", "secret" => "3vhOiytkkCldzmdZXQS7CpJUYOxcZS5LjVpEstVgP1gK4ZDBNH")
-                )
+                    "keys" => array("key" => "MEsgALI8CVgjyjB486M0Sxuup", "secret" => "hkXzCD8DDjTnuQkrNDO0U1NMBZLB5xcr45xtiYj7YdnJT0IwKL")
+                ),
+				 "Google" => array (
+					"enabled" => true,
+					"keys"    => array ( "id" => "621735983970-81gh59d3nstk8ngu7gmded1dc5o93utk.apps.googleusercontent.com", "secret" => "clX_kGiH2ObbJ5QRUQhQ-GtS" ),
+					"scope"           => "https://www.googleapis.com/auth/userinfo.profile ". // optional
+								   "https://www.googleapis.com/auth/userinfo.email"   , // optional
+				)
 	// for another provider refer to hybridauth documentation
             )
         );

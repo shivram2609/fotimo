@@ -22,7 +22,7 @@
                     <p class="clearfix">
                         <a href="<?php echo SITE_LINK."login_with_facebook" ?>" title="Login with Facebook"><img alt="facebook" src="img/login-fb.png"></a>
                         <a href="<?php echo SITE_LINK."login_with_twitter" ?>" title="Login With Twitter"><img alt="twitter" src="img/login-twitter.png"></a>
-                        <a href="<?php echo SITE_LINK."login_with_google+" ?>" title="login_with_google+"><img alt="login" src="img/login-g.png"></a>
+                        <a href="<?php echo SITE_LINK."login_with_google" ?>" title="login_with_google+"><img alt="login" src="img/login-g.png"></a>
                     </p>
                </div>
             </div>
@@ -30,6 +30,7 @@
     </div>
 </div>
 </section>
+<?php echo $this->Form->end(); ?>
 <script>
         window.jQuery || document.write('<script src="libs/jquery-1.10.1.min.js"><\/script>')
 </script>
