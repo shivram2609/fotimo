@@ -516,6 +516,13 @@ width:81%; box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
 }
+.login-left input[type="password"] {background: transparent; border:solid #fff 1px; border-radius: 8px;
+font-size: 18px; padding: 18px 25px; color: #777; font-family: 'bebas_neueregular';
+width:81%; box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
 input:focus {outline: none;}
 .login-left .ip {margin-top: 5px;}
 .login-left .btn {margin-top: 15px;}

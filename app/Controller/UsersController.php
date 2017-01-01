@@ -619,6 +619,7 @@ class UsersController extends AppController {
         );
 		//pr($hybridauth_config);
 		//echo($provider);
+		//die;
         try {
             // create an instance for Hybridauth with the configuration file path as parameter
             $hybridauth = new Hybrid_Auth($hybridauth_config);
