@@ -679,6 +679,8 @@ class UsersController extends AppController {
             // well, basically you should not display this to the end user, just give him a hint and move on..
             $error .= "Original error message: " . $e->getMessage();
             $error .= "Trace: " . $e->getTraceAsString();
+			echo $error;
+			die;
             $this->set('error', $error);
         }
         //die("here");
