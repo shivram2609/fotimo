@@ -1,7 +1,7 @@
 <header>
     <?php if ($this->params['controller'] == 'pages' && $this->params['action'] == 'index' ) { ?>
 	<div class="content">
-                <div class="col12">
+        <div class="col12">
 			<a class="menuIcon" href="#">
 				<span class="menuLine"></span>
 				<span class="menuLine"></span>
@@ -32,7 +32,17 @@
 		</div>
 
 	</div>
-    <?php } ?>
+    <?php } elseif ($this->Session->read("Auth.User.id")) { ?>
+	<div class="content">
+        <div class="col12">
+			<nav class="headerMenu">
+				<ul class="navigation clearfix">
+					<li class="right"><a href="<?php echo SITE_LINK."logout"; ?>">SIGNOUT</a>
+				</ul>
+			</nav>
+		</div>
+	</div>
+	<?php } ?>
 </header>
 <span class="anchor" id="home"></span>
 <section class="logosec">
