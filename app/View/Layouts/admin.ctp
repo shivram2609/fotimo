@@ -32,7 +32,7 @@ if (/*@cc_on!@*/false) {
 <head>
     <?php echo $this->Html->charset(); ?>
     <title>
-		<?php echo "SwankCook"; ?>:
+		<?php echo "FOTIMO"; ?>:
         <?php echo $title_for_layout; ?>
     </title>
     

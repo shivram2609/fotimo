@@ -46,6 +46,7 @@
 	Router::connect('/admin/categories/edit/*', array('controller' => 'categories', 'action' => 'edit',"admin"=>true));
 	Router::connect('/admin/categories/delete/*', array('controller' => 'categories', 'action' => 'delete',"admin"=>true));
 	Router::connect('/admin/categories/*', array('controller' => 'categories', 'action' => 'index',"admin"=>true));
+	Router::connect('/admin/users/*', array('controller' => 'users', 'action' => 'index',"admin"=>true));
 	
 	Router::connect('/admin/locations/add', array('controller' => 'locations', 'action' => 'add',"admin"=>true));
 	Router::connect('/admin/locations/edit/*', array('controller' => 'locations', 'action' => 'edit',"admin"=>true));
