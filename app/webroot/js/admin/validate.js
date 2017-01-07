@@ -76,7 +76,7 @@ $(document).ready(function() {
 		}else{
 			$("#checkall").removeAttr("checked");
 		}
-	});	
+	});	 
 	var searchButton 	= '';	
 	$(".submitsearch").click(function() {		
 		searchButton = $(this).attr('attr');		

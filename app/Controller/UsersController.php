@@ -394,7 +394,7 @@ class UsersController extends AppController {
 		if ( !empty($searchval) ) {
 			$this->set("searchval",$searchval);
 			$this->conditions = array("UserDetail.first_name like"=> "%".$searchval."%");
-		}
+		} 
 		if ( $this->request->is("post") ) {
 			if ( !empty($this->data['User']['searchval']) ) {
 				$this->redirect(SITE_LINK."admin/users/".$this->data['User']['searchval']);
