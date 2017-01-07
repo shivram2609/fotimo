@@ -36,10 +36,10 @@ class UsersController extends AppController {
      */
 	function login($url = NULL) {
              $this->userInfo();
-            //pr($this->Session->read("AuthUser"));
-            //die("here");
-            $this->checklogin();
-            //$this->layout ="admin";
+	//pr($this->Session->read("AuthUser"));
+	//die("here");
+             $this->checklogin();
+		//$this->layout ="admin";
         $this->set('title_for_layout', 'User Login');
         if (!empty($url)) {
             $url = implode("/", $this->params['pass']);
@@ -62,6 +62,7 @@ class UsersController extends AppController {
 			$password = $this->encryptpass($this->data['User']['password']);
 			$this->User->hasMany = $this->User->belongsTo = $this->User->hasOne = array();
 			$this->User->hasOne = array(
+			
 				"UserDetail" => array (
 					"className" => "UserDetail",
 					"foreignKey" => false,
@@ -87,10 +88,11 @@ class UsersController extends AppController {
 					} else {
 						$this->redirect(SITE_LINK."dashboard");
 					}
+					
 				} else {
 					$this->Session->setFlash("Your account is not activated yet.");
-                    $this->redirect(array("action" => "login"));
-                    exit;
+                                        $this->redirect(array("action" => "login"));
+                                exit;
 				}
 			} else {
 				$this->Session->setFlash("The email or password you entered is incorrect.");
@@ -100,7 +102,6 @@ class UsersController extends AppController {
 		} elseif (!empty($identifier)) {
 			$this->User->hasMany = $this->User->belongsTo = $this->User->hasOne = array();
 			$this->User->hasOne = array(
-			
 				"UserDetail" => array (
 					"className" => "UserDetail",
 					"foreignKey" => false,
@@ -125,8 +126,8 @@ class UsersController extends AppController {
 				}
 			} else {
 				$this->Session->setFlash("The email or password you entered is incorrect.");
-                $this->redirect(SITE_LINK."login");
-                exit;
+                                $this->redirect(SITE_LINK."login");
+                                exit;
 			}
 		}
 	}
@@ -251,6 +252,8 @@ class UsersController extends AppController {
 				$this->redirect(SITE_LINK."dashboard");
 			}
 		}
+
+        
     }
 
     /* end of function */
@@ -263,9 +266,7 @@ class UsersController extends AppController {
      * @description		: NA
      */
     function admin_dashboard() {
-               
        $this->set('title_for_layout', 'Dashboard');
-	   
     }
     
      
@@ -357,13 +358,11 @@ class UsersController extends AppController {
 		}
     }
     /* end of function */
-    
-    
     public function changepassword() {
-        $this->__processChangepassword();
+        $this->processChangepassword();
     }
     
-    
+     
     	/*
 	 * @function name	: changepassword
 	 * @purpose			: display form of change password and also performs password change functionlity
@@ -371,39 +370,10 @@ class UsersController extends AppController {
 	 * @return			: none
 	 * @description		: NA
 	*/
-	public function admin_changepassword() {					
-            $this->__processChangepassword();
+	public function admin_changepassword() {
+            $this->processChangepassword();
 	}
-	/* end of function 	*/
-	
-	
-	function __processChangepassword() {
-            $this->userInfo();
-            if (!empty($this->data)) {
-                $this->User->set($this->data);
-                if ( $this->User->validates() ) {
-                    $password = $this->encryptpass($this->data['User']['currentpassword']);	
-                    $user = $this->User->find("first",array("conditions"=>array("User.id"=>$this->Session->read('AuthUser.User.id'),'User.password'=>$password),'recursive'=>-1));				
-                    $new_pass =$this->encryptpass($this->data['User']['newpassword']);			
-                    if (empty($user)) {
-                        $this->Session->setFlash('Current password is not correct.');	
-                    }
-                    elseif(empty($this->data['User']['newpassword']) || empty($this->data['User']['confirmpassword'])) {
-                        $this->Session->setFlash('New and confirm password do not match.');
-                    } elseif($password == $new_pass){
-                        $this->Session->setFlash('New password can not be same as current password.');
-                    } elseif($this->data['User']['newpassword'] != $this->data['User']['confirmpassword']) {
-                        $this->Session->setFlash('New and confirm password do not match.', 'default');
-                    } else {				
-                        $data['User']['password'] =  $new_pass;
-                        $this->User->create();	
-                        $this->User->id = $this->Session->read("AuthUser.User.id");			
-                        $this->User->save($data,array("validate"=>false));
-                        $this->Session->setFlash('Password has been updated successfully.', 'default',array("class"=>"success_message"));			
-                    }
-                }
-            }
-        }
+	/* end of function */
 	
 
 /**
@@ -511,7 +481,6 @@ class UsersController extends AppController {
 						"type" => "Inner"
 					)
 				);
-				
 				$userData = $this->data;
 				$email = $userData['User']['email'];
 				$identifier = $userData['User']['identifier'];
@@ -520,7 +489,7 @@ class UsersController extends AppController {
 				$userData['User']['password'] = isset($userData['User']['password'])?$this->encryptpass($userData['User']['password']):$this->encryptpass($userData['User']['identifier']);
 				$userData['User']['status'] = $status = empty($userData['User']['identifier'])?0:1;
 				$userData['UserDetail']['first_name'] = $name = $userData['User']['name'];
-                $userData['User']['user_slug'] = $this->getSlug();
+                                $userData['User']['user_slug'] = $this->getSlug();
 				$confirmlink = SITE_LINK."register-confirmation/".$confirmationtoken;
 				//pr($userData);
 				$dataSource = $this->User->getDataSource();
@@ -569,8 +538,7 @@ class UsersController extends AppController {
 		$this->set("title_for_layout","User Signup");
 	}
 	
-	
-	function confirmation( $token = NULL ) {
+        function confirmation( $token = NULL ) {
             $this->userInfo();
 		if ( !empty($token) ) {
 			if ( $user = $this->User->find("first",array("conditions"=>array("confirmationtoken"=>$token),"recursive"=>-1))) {
@@ -600,26 +568,19 @@ class UsersController extends AppController {
             "providers" => array(
                 "Facebook" => array(
                     "enabled" => true,
-                    "keys" => array("id" => "1627175230853791", "secret" => "ef022ac07163fc51c21e68f7ed4ba985"),
+                    "keys" => array("id" => "124384158044511", "secret" => "4ae9dd2f209893e63807b02c929fe17e"),
                     'scope'   => 'email, user_about_me, user_birthday, user_hometown, user_website, read_stream',
                     'trustForwarded' => false
                 ),
                 "Twitter" => array(
                     "enabled" => true,
-                    "keys" => array("key" => "MEsgALI8CVgjyjB486M0Sxuup", "secret" => "hkXzCD8DDjTnuQkrNDO0U1NMBZLB5xcr45xtiYj7YdnJT0IwKL")
-                ),
-				 "Google" => array (
-					"enabled" => true,
-					"keys"    => array ( "id" => "621735983970-81gh59d3nstk8ngu7gmded1dc5o93utk.apps.googleusercontent.com", "secret" => "clX_kGiH2ObbJ5QRUQhQ-GtS" ),
-					"scope"           => "https://www.googleapis.com/auth/userinfo.profile ". // optional
-								   "https://www.googleapis.com/auth/userinfo.email"   , // optional
-				)
+                    "keys" => array("key" => "gjWVPpuiOsBpmql5ecCCKqf13", "secret" => "3vhOiytkkCldzmdZXQS7CpJUYOxcZS5LjVpEstVgP1gK4ZDBNH")
+                )
 	// for another provider refer to hybridauth documentation
             )
         );
 		//pr($hybridauth_config);
 		//echo($provider);
-		//die;
         try {
             // create an instance for Hybridauth with the configuration file path as parameter
             $hybridauth = new Hybrid_Auth($hybridauth_config);
@@ -679,8 +640,6 @@ class UsersController extends AppController {
             // well, basically you should not display this to the end user, just give him a hint and move on..
             $error .= "Original error message: " . $e->getMessage();
             $error .= "Trace: " . $e->getTraceAsString();
-			//echo $error;
-			//die;
             $this->set('error', $error);
         }
         //die("here");
@@ -826,7 +785,7 @@ class UsersController extends AppController {
         
         function getSlug() {
             $slug = strtotime(date("Y-m-d h:i:s"));
-            if ( $user = $this->User->find("first",array("conditions"=>array("User.user_slug"=>$slug),"recursive"=>-1)) ) {
+            if ( $user = $this->User->findbyUserSlug($slug) ) {
                 $this->getSlug();
             } else {
                 return $slug;

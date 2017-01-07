@@ -107,7 +107,7 @@ section {
 }
 body {
     line-height: 1;
-    padding-bottom: 75px;
+    /*padding-bottom: 75px;*/
 }
 ol,
 ul {
@@ -919,7 +919,8 @@ a.sideBarBtn {
     margin-bottom: 4px;
 }
 .formRow input,
-.formRow textarea {
+.formRow textarea,
+.formRow select {
     width: 100%;
     background-color: #f7f7f7;
     border: 1px #bababa solid;

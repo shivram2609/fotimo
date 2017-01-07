@@ -24,7 +24,7 @@ App::uses('Controller', 'Controller');
 
 /**
  * Application Controller
- *
+*
  * Add your application-wide methods in the class below, your controllers
  * will inherit them.
  *
@@ -364,6 +364,46 @@ class AppController extends Controller {
                 }
             }
         }
+        
+        
+        
+        public function processChangepassword($data = array()) {
+            if (!empty($this->request->data) || !empty($data)) {
+                $this->loadModel("User");
+                if ( empty($data) ) {
+                    $data = $this->request->data;
+                }
+                
+                $data['User']['encOldPassword'] = $this->encryptpass($data['User']['currentpassword']);
+                $this->User->set($data);
+                if ( $this->User->validates() ) {
+                    
+                    $password = $this->encryptpass($this->data['User']['currentpassword']);
+                    $this->User->create();
+                    
+                    $user = $this->User->find("first",array("conditions"=>array("User.id"=>$this->Session->read('AuthUser.User.id'),'User.password'=>$password),'recursive'=>-1));				
+                    
+                    $new_pass =$this->encryptpass($this->data['User']['newpassword']);	
+                    if (empty($user)) {
+                        $this->Session->setFlash('Current password is not correct.');	
+                    }
+                    elseif(empty($this->data['User']['newpassword']) || empty($this->data['User']['confirmpassword'])) {
+                        $this->Session->setFlash('New and confirm password do not match.');
+                    } elseif($password == $new_pass){
+                        $this->Session->setFlash('New password can not be same as current password.');
+                    } elseif($this->data['User']['newpassword'] != $this->data['User']['confirmpassword']) {
+                        $this->Session->setFlash('New and confirm password do not match.', 'default');
+                    } else {				
+                        $data['User']['password'] =  $new_pass;
+                        $this->User->create();	
+                        $this->User->id = $this->Session->read("AuthUser.User.id");			
+                        $this->User->save($data,array("validate"=>false));
+                        $this->Session->setFlash('Password has been updated successfully.', 'default',array("class"=>"success_message"));			
+                    }
+                }
+            }
+        }
+        
 }
 
 

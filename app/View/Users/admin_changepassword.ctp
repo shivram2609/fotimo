@@ -14,7 +14,7 @@
 		
 		<div class="fields">
 			<?php echo $this->Form->input("currentpassword",array("type"=>'password',"id"=>'CurrentPassword','placeholder'=>"Current Password",'value'=>'','class'=>'form-control','div'=>false,'label'=>false)); ?>
-
+                        <?php echo $this->Form->hidden("id",array("value"=>$this->Session->read("AuthUser.User.id")));?>
 		</div>	
 
 		<div class="fields">
@@ -24,7 +24,7 @@
 		<div class="fields">
 			<?php echo $this->Form->input("confirmpassword",array("type"=>'password',"id"=>'UserRetypePassword','placeholder'=>"Confirm Password",'value'=>'','class'=>'form-control','div'=>false,'label'=>false)); ?>
 		</div>	
-       </fieldset>
+                </fieldset>
 		<!-- =====Button section start===== -->
 		<div class="signup-signin-btn">
 			<?php echo $this->Form->Submit('SUBMIT',array("class"=>"button","title"=>"Submit",'div'=>false)); ?>

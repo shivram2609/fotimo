@@ -184,11 +184,9 @@ class User extends AppModel {
 	);
 	
 	function confirmpassword() {
-		$value = $this->data['User']['confirmpassword'];
-                //pr($value);die;
-		if ($value == $this->data['User']['password']) {
-		  return true;
-		} elseif ($value == $this->data['User']['newpassword']) {
+		$value = $this->data['User']['newpassword'];
+                $confirmPassword = $this->data['User']['confirmpassword'];
+		if ( $value == $confirmPassword) {
 		  return true;
 		} else {
 		  return false;
@@ -196,15 +194,12 @@ class User extends AppModel {
 	}
 	
 	function checkoldpassword() {
-		$value = $this->data['User']['currentpassword'];
-		$value = $this->data['User']['id'];
-		$this->recursive = -1;
-		$user = $this->find("first",array("conditions"=>array("User.id"=>$this->data['User']['id'],"User.password"=>$this->data['User']['currentpassword'])));
+            	$this->recursive = -1;
+		$user = $this->find("first",array("conditions"=>array("User.id"=>$this->data['User']['id'],"User.password"=>$this->data['User']['encOldPassword'])));
 		if (empty($user)) {
 			return false;
 		} else {
 			return true;
 		}
 	}
-	
 }

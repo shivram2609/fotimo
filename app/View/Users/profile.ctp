@@ -10,7 +10,7 @@
         	<?php echo $this->element("profile_header",array("is_profile"=>1)); ?>
 			<div class="form-group border-btm">&nbsp;</div>
 			<div class="row">
-                            <?php echo $this->element("profile_left",array("is_profile"=>1)); ?>
+                            <?php echo $this->element("profile_left"); ?>
                             <?php echo $this->element("profile_middle");?>
 			</div>
 			

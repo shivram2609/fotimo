@@ -104,13 +104,22 @@ class UserDetailsController extends AppController {
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			$data1 = $this->request->data;
+                        //pr($data1);
                         $data1['UserDetail']['image'] =(empty($this->request->data['UserDetail']['image']['name'])?'':$this->request->data['UserDetail']['image']['name']);
 			if ( !empty($this->request->data['UserDetail']['image']['name']) ) {
 				$oldImage = !empty($this->request->data['UserDetail']['old_image'])?$this->request->data['UserDetail']['old_image']:'';
 				$this->request->data['UserDetail']['image'] = ($this->uploadProductImage($this->request->data['UserDetail']['image'],"profileimg",true,$oldImage))?$this->imagename:$this->request->data['UserDetail']['old_image'];
-			} else {
+			//die("here");
+                        } else {
+                            //die("there");
 				$this->request->data['UserDetail']['image'] = $this->request->data['UserDetail']['old_image'];
 			}
+                        if ( !empty($data1['User']['currentpassword']) || !empty($data1['User']['newpassword']) || !empty($data1['User']['confirmpassword']) ) {
+                            $this->processChangepassword($data1);
+                        }
+                        unset($data1['User']['currentpassword']);
+                        unset($data1['User']['newpassword']);
+                        unset($data1['User']['confirmpassword']);
 			$data = $this->request->data;
 			$this->User->set($data1['User']);
                         $this->UserDetail->set($data1['UserDetail']);
@@ -122,12 +131,21 @@ class UserDetailsController extends AppController {
                             $flag2 = true;
                         }
 			if ( $flag1 && $flag2 ) {
-				$data['UserDetail']['details'] = base64_encode(serialize(array("address"=>$data['UserDetail']['address'],"about"=>$data['UserDetail']['about'],"favourite_food"=>$data['UserDetail']['favourite_food'],"image"=>$data['UserDetail']['image'],"pin_code"=>$data['UserDetail']['pin_code'],"city"=>$data['UserDetail']['city'],"state"=>$data['UserDetail']['state']))); 
+				$data['UserDetail']['details'] = base64_encode(serialize(array("description"=>$data['UserDetail']['description'],"image"=>$data['UserDetail']['image']))); 
                                 /*update userdetail according to session value*/
                                 $this->Session->write("AuthUser.UserDetail.details",$data['UserDetail']['details']);
+                                $this->User->hasMany = $this->User->hasOne = $this->User->belongsTo = array();
+                                $this->User->hasOne = array(
+                                        "UserDetail" => array (
+                                                "className" => "UserDetail",
+                                                "foreignKey" => "user_id",
+                                                "type" => "Inner"
+                                        )
+                                );
                                 $this->User->create();
                                 $this->User->id = $data['User']['id'];
                                 if ($this->User->saveAll($data,array("validate"=>false))) {
+                                        //pr($data);
 					$this->Session->setFlash('The user detail has been saved.','default',array("class"=>"success_message"));
 					return $this->redirect(SITE_LINK."edit-profile");
 				} else {
@@ -139,17 +157,17 @@ class UserDetailsController extends AppController {
 			$data= $this->User->UserDetail->find('first', $options);
 			$tmpData = unserialize(base64_decode($data['UserDetail']['details']));
                         //pr($tmpData);exit;
-			foreach ( $tmpData as $key=>$val ) {
-				$data['UserDetail'][$key] = $val;
-			}
+                        if (!empty($tmpData)) { 
+                            foreach ( $tmpData as $key=>$val ) {
+                                    $data['UserDetail'][$key] = $val;
+                            }
+                        }
 			$this->request->data = $data;
 		}
 		$locations = $this->UserDetail->Location->find('list',array("conditions"=>array("status"=>1)));
 		$this->set(compact('locations'));
 	}
-        
-        
-/**
+        /**
  * delete method
  *
  * @throws NotFoundException

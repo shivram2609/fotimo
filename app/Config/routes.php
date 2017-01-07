@@ -35,15 +35,9 @@
 	Router::connect('/logout/*', array('controller' => 'users', 'action' => 'logout'));
 	Router::connect('/signup/*', array('controller' => 'users', 'action' => 'signup'));
 	Router::connect('/forgot-password/*', array('controller' => 'users', 'action' => 'forgotpassword'));
-        Router::connect('/change-password/*', array('controller' => 'users', 'action' => 'changepassword'));
 	Router::connect('/register-confirmation/*', array('controller' => 'users', 'action' => 'confirmation'));
 	Router::connect('/dashboard/*', array('controller' => 'users', 'action' => 'dashboard'));
-        Router::connect('/p/*', array('controller' => 'users', 'action' => 'profile'));
-         Router::connect('/follow/*', array('controller' => 'users', 'action' => 'follow'));
 	Router::connect('/edit-profile/*', array('controller' => 'userDetails', 'action' => 'edit'));
-        Router::connect('/getLnt/*', array('controller' => 'userDetails', 'action' => 'getLnt'));
-        Router::connect('/add-dishes/*', array('controller' => 'dishes', 'action' => 'add'));
-        Router::connect('/view-listing/*', array('controller' => 'dishes', 'action' => 'listDish'));
 	
 	Router::connect('/admin/dashboard', array('controller' => 'users', 'action' => 'dashboard',"admin"=>true));
 	Router::connect('/admin/change-password', array('controller' => 'users', 'action' => 'changepassword',"admin"=>true));
