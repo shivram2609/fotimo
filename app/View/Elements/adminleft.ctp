@@ -15,6 +15,9 @@ if ($this->Session->read("AuthUser.User.id") && $this->Session->read("AuthUser.U
 				</li>
 				<li>
 					<a href="<?php echo $this->Html->url(SITE_LINK.'admin/change-password'); ?>" <?php if ($this->params['action'] == 'admin_changepassword') { ?> class="active" <?php } ?>>Change Password</a>
+				</li>
+				<li>
+					<a href="<?php echo $this->Html->url(SITE_LINK.'admin/users'); ?>" <?php if ($this->params['controller'] == 'users') { ?> class="active" <?php } ?>>Users</a>
 				</li> 
 				<?php /*
 				<li>

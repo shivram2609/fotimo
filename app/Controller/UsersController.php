@@ -381,9 +381,28 @@ class UsersController extends AppController {
  *
  * @return void
  */
-	public function index() {
-		$this->User->recursive = 0;
-		$this->set('users', $this->Paginator->paginate());
+	public function admin_index($searchval = NULL) {
+		$this->bulkactions();
+		$this->User->hasMany = $this->User->hasOne = $this->User->belongsTo = array();
+		$this->User->hasOne = array(
+			"UserDetail" => array (
+				"className" => "UserDetail",
+				"foreignKey" => "user_id",
+				"type" => "Inner"
+			)
+		);
+		if ( !empty($searchval) ) {
+			$this->set("searchval",$searchval);
+			$this->conditions = array("UserDetail.first_name like"=> "%".$searchval."%");
+		}
+		if ( $this->request->is("post") ) {
+			if ( !empty($this->data['User']['searchval']) ) {
+				$this->redirect(SITE_LINK."admin/users/".$this->data['User']['searchval']);
+			} else {
+				$this->redirect(SITE_LINK."admin/users/");
+			}
+		}
+		$this->set('users', $this->Paginator->paginate($this->conditions));
 	}
 
 /**
